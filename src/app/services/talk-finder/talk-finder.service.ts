@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { YouTubeTalkFactory } from '../talk-factory/talk-factory.service';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Talk, QDefinition, ResourceType } from 'src/app/models/talk.model';
+import { Observable, of } from 'rxjs';
 
 /// <reference path="@types/gapi/index.d.ts" />
 
@@ -18,9 +19,10 @@ export class TalkFinder {
     private youTubeTalkFactory: YouTubeTalkFactory,
   ) {}
 
-  find() {
+  find(): Observable<Talk[]> {
     const params = new HttpParams()
       .set('q', 'javascript+typescript')
+      .set('maxResults', (20).toString())
       .set('key', environment.youtubeApiKey)
       .set('part', 'snippet');
 
@@ -29,7 +31,10 @@ export class TalkFinder {
         this.baseUrl,
         { params },
       )
-      .pipe(map(this.extractData.bind(this)));
+      .pipe(
+        map(this.extractData.bind(this)),
+        catchError(() => of(null)),
+      );
   }
 
   private extractData(

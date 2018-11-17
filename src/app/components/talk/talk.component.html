@@ -22,11 +22,9 @@
       [mode]="'indeterminate'"
     ></mat-progress-spinner>
   </mat-card-content>
-  <iframe
+  <youtube-player
     mat-card-image
-    type="text/html"
     class="video"
-    src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
-    frameborder="0"
-  ></iframe>
+    [videoId]="talk.videoId">
+  </youtube-player>
 </mat-card>
