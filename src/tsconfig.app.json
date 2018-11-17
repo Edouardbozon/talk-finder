@@ -8,7 +8,7 @@
     "test.ts",
     "**/*.spec.ts"
   ],
-  "angularCompilerOptions": {
-    "enableIvy": "ngtsc"
-  }
+  // "angularCompilerOptions": {
+  //   "enableIvy": "ngtsc"
+  // }
 }
