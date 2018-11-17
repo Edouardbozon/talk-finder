@@ -16,11 +16,12 @@
       </mat-menu>
     </mat-card-title>
   </mat-card-header>
-  <mat-progress-spinner
-    class="loader"
-    mat-card-image
-    [mode]="'indeterminate'"
-  ></mat-progress-spinner>
+  <mat-card-content class="loader">
+    <mat-progress-spinner
+      [diameter]="50"
+      [mode]="'indeterminate'"
+    ></mat-progress-spinner>
+  </mat-card-content>
   <iframe
     mat-card-image
     type="text/html"
