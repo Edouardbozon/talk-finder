@@ -19,9 +19,10 @@ import {
 } from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TalkComponent } from './talk/talk.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, DashboardComponent],
+  declarations: [AppComponent, NavComponent, DashboardComponent, TalkComponent],
   imports: [
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

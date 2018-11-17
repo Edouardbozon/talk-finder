@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.card {
+  overflow: hidden;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.card-content {
+  position: relative;
+  width: 100%;
+}
+
+.video {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 52px;
+}
+
+.loader {
+  margin: 0 auto;
+  margin-top: 100px;
+}

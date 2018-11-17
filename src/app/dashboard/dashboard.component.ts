@@ -1,18 +1,23 @@
-import { Component, AfterViewInit, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  ViewChildren,
+  ElementRef,
+  QueryList,
+  OnInit,
+} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { MatGridTile } from '@angular/material';
+import { Talk } from '../talk/talk.component';
 
 @Component({
   selector: 'tf-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements AfterViewInit {
-
+export class DashboardComponent implements OnInit {
   @ViewChildren('cards', { read: ElementRef }) cardsRef: QueryList<ElementRef>;
-
-  cardsContentWidth: number[] = [];
 
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -41,17 +46,20 @@ export class DashboardComponent implements AfterViewInit {
         { title: 'Card 8', cols: 1, rows: 1 },
         { title: 'Card 9', cols: 1, rows: 1 },
       ];
-    })
+    }),
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  talks: Talk[] = [
+    { title: 'Hey' },
+    { title: 'Hey' },
+    { title: 'Hey' },
+    { title: 'Hey' },
+    { title: 'Hey' },
+    { title: 'Hey' },
+    { title: 'Hey' },
+  ];
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.cardsRef.forEach(content => {
-        const { offsetWidth } = content.nativeElement;
-        this.cardsContentWidth.push(offsetWidth);
-      });
-    }, 5);
-  }
+  constructor(private breakpointObserver: BreakpointObserver) {}
+
+  ngOnInit(): void {}
 }
