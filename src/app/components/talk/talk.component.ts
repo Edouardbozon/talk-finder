@@ -10,6 +10,9 @@ import { Talk } from 'src/app/models/talk.model';
 export class TalkComponent implements OnInit {
   @Input() talk: Talk;
 
+  imgLoaded = false;
+  isHovered = false;
+
   constructor() {}
 
   ngOnInit() {}

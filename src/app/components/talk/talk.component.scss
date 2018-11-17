@@ -3,12 +3,12 @@
 }
 
 .card {
-  overflow: hidden;
   position: absolute;
   top: 16px;
   left: 16px;
   right: 16px;
   bottom: 16px;
+  overflow: hidden;
 }
 
 .more-button {
@@ -22,11 +22,44 @@
   width: 100%;
 }
 
-.video ::ng-deep iframe {
+.poster {
+  display: block;
   height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 52px;
+  width: inherit;
+  overflow: hidden;
+  position: relative;
+
+  .description {
+    display: block;
+    padding: 16px 32px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    opacity: 0;
+    color: #fff;
+    font-weight: 100;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: opacity ease 300ms 400ms;
+  }
+
+  img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transform: scale(1.3);
+    transition: transform cubic-bezier(.82,.22,.03,1.71) 300ms 400ms;
+  }
+
+  &:hover {
+    .description {
+      opacity: 1;
+    }
+    img {
+      transform: scale(1.05);
+    }
+  }
 }
 
 .loader {

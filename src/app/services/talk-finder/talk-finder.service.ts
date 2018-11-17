@@ -46,6 +46,7 @@ export class TalkFinder {
         searchResource.snippet.description,
         searchResource.id.videoId,
         searchResource.id.kind as ResourceType,
+        searchResource.snippet.thumbnails,
       );
     });
   }

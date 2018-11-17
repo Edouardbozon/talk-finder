@@ -9,6 +9,13 @@ export interface Talk {
   description: string;
   videoId: string;
   kind: ResourceType;
+  thumbnails: Thumbnails;
+}
+
+export interface Thumbnails {
+  default: { url: string, width: number , height: number };
+  high: { url: string, width: number , height: number };
+  medium: { url: string, width: number , height: number };
 }
 
 export enum QDefinition {
@@ -22,6 +29,7 @@ export class YouTubeTalk implements Talk {
     public title: string,
     public description: string,
     public videoId: string,
-    public kind: ResourceType
+    public kind: ResourceType,
+    public thumbnails: Thumbnails
   ) { }
 }
