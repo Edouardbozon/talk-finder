@@ -8,6 +8,7 @@ import {
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Talk } from 'src/app/models/talk.model';
+import { TalkFinder } from 'src/app/services/talk-finder/talk-finder.service';
 
 @Component({
   selector: 'tf-dashboard',
@@ -49,7 +50,7 @@ export class DashboardComponent implements OnInit {
 
   talks: Talk[] = [];
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private talkFinder: TalkFinder) {}
 
   ngOnInit(): void {}
 }

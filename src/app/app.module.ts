@@ -15,11 +15,15 @@ import {
   MatCardModule,
   MatMenuModule,
   MatProgressSpinnerModule,
+  MatCheckboxModule,
+  MatSelectModule,
 } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { ShellComponent } from './components/shell/shell.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TalkComponent } from './components/talk/talk.component';
+import { HttpClientModule } from '@angular/common/http';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 @NgModule({
   declarations: [
@@ -33,8 +37,12 @@ import { TalkComponent } from './components/talk/talk.component';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
+    HttpClientModule,
+    YoutubePlayerModule,
     BrowserAnimationsModule,
     LayoutModule,
+    MatCheckboxModule,
+    MatSelectModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatButtonModule,

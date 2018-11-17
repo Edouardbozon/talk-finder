@@ -379,6 +379,18 @@
     semver "5.5.1"
     semver-intersect "1.4.0"
 
+"@types/gapi.youtube@^3.0.34":
+  version "3.0.34"
+  resolved "https://registry.yarnpkg.com/@types/gapi.youtube/-/gapi.youtube-3.0.34.tgz#70c012396f2bdd328455e231e6fdc774537af498"
+  integrity sha512-jtaKwZen/QWASJkXKcPl6OmKMMUv5cE9OaNfHgCZlT1TfYxO6yi+3rgG/8z4G8zuvcIflpnTk5C2n0Td3CDBDw==
+  dependencies:
+    "@types/gapi" "*"
+
+"@types/gapi@*":
+  version "0.0.36"
+  resolved "https://registry.yarnpkg.com/@types/gapi/-/gapi-0.0.36.tgz#e7fb3d4d4a6fbdbd0a9aef1cbd93d3b115d59a3d"
+  integrity sha512-biMDn3eNRoPEMaPTEn5DwKXu64ng3U3cDQkePOllZ7uTRcA9lpPqwcLrDPF1cP0v+CrAtyv8w95/eVDSsQYPYQ==
+
 "@types/jasmine@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.0.0.tgz#9a6b6755a02fcd6baa088a767557709c79728f98"
@@ -415,6 +427,11 @@
   version "3.0.13"
   resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-3.0.13.tgz#deb799c641773c5e367abafc92d1e733d62cddd7"
   integrity sha512-rI0LGoMiZGUM+tjDakQpwZOvcmQoubiJ7hxqrYU12VRxBuGGvOThxrBOU/QmJKlKg1WG6FMzuvcEyLffvVSsmw==
+
+"@types/youtube@0.0.32":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@types/youtube/-/youtube-0.0.32.tgz#b53ebc75e6646d7dc46295b8eceb5f1e596f68ae"
+  integrity sha512-fNknzXya97rrOnv9ulBdDefMcyViIuwSeFAPw+/ymofer2D6myXO6E3MucmcNAXjHzrlyLnrwwDied0bZqg0jw==
 
 "@webassemblyjs/ast@1.7.10":
   version "1.7.10"
@@ -4696,6 +4713,14 @@ neo-async@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
+
+ngx-youtube-player@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-youtube-player/-/ngx-youtube-player-6.0.0.tgz#9de46a98a7dc20eeadd0c0dec4d384f595704ca9"
+  integrity sha512-dZdssDfq5THK8dsFVvx68LVbkjJMlYaXLrN4vp5/hw5CLWB5F9WtQ9rpiV16Hei4Tv5A8PryCmMWMznn1u/HRQ==
+  dependencies:
+    "@types/youtube" "0.0.32"
+    tslib "^1.7.1"
 
 nice-try@^1.0.4:
   version "1.0.5"
