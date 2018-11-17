@@ -11,7 +11,11 @@ import {
   MatButtonModule,
   MatSidenavModule,
   MatIconModule,
-  MatListModule, MatGridListModule, MatCardModule, MatMenuModule,
+  MatListModule,
+  MatGridListModule,
+  MatCardModule,
+  MatMenuModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
+    MatProgressSpinnerModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,

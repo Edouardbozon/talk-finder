@@ -1,12 +1,21 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="4" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+  <mat-grid-list cols="4" rowHeight="300px">
+    <mat-grid-tile
+      *ngFor="let card of (cards | async); let i = index"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            {{ card.title }}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
@@ -15,9 +24,18 @@
             </mat-menu>
           </mat-card-title>
         </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
-        </mat-card-content>
+        <mat-progress-spinner
+          class="loader"
+          mat-card-image
+          [mode]="'indeterminate'"
+        ></mat-progress-spinner>
+        <iframe
+          mat-card-image
+          type="text/html"
+          class="video"
+          src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
+          frameborder="0"
+        ></iframe>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
