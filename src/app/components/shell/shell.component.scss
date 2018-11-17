@@ -10,8 +10,13 @@
   background: inherit;
 }
 
-.aside {
-  padding: 0 16px;
+.thumbnail {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  border-radius: 100%;
+  background: #fff;
 }
 
 .mat-toolbar.mat-primary {

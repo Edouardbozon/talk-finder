@@ -4,18 +4,17 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, catchError } from 'rxjs/operators';
+import { Thumbnails } from 'src/app/models/thumbnails';
 
 /// <reference path="@types/gapi/index.d.ts" />
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChannelFinder {
   private baseUrl = 'https://www.googleapis.com/youtube/v3';
 
-  constructor(
-    private http: HttpClient,
-  ) {}
+  constructor(private http: HttpClient) {}
 
   getById(id: string): Observable<Channel[]> {
     const params = new HttpParams()
@@ -38,6 +37,11 @@ export class ChannelFinder {
     response: GoogleApiYouTubePaginationInfo<GoogleApiYouTubeChannelResource>,
   ): Channel {
     const channel = response.items[0];
-    return new Channel(channel.brandingSettings.channel.title);
+    return new Channel(
+      channel.id,
+      channel.brandingSettings.channel.title,
+      channel.brandingSettings.channel.description,
+      channel.snippet.thumbnails as Thumbnails,
+    );
   }
 }

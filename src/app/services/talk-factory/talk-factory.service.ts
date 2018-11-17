@@ -3,14 +3,14 @@ import {
   Talk,
   YouTubeTalk,
   ResourceType,
-  Thumbnails,
 } from 'src/app/models/talk.model';
 import { uuid } from 'src/app/utils/uuid-generator';
+import { Thumbnails } from 'src/app/models/thumbnails';
 
 @Injectable({
   providedIn: 'root',
 })
-export class YouTubeTalkFactory {
+export class TalkFactory {
   create(
     title: string,
     description: string,

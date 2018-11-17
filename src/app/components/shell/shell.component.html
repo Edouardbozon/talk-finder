@@ -11,6 +11,7 @@
     <aside class="aside">
       <mat-list>
         <mat-list-item *ngFor="let channel of channelStore.channel | async">
+          <img class="thumbnail mat-elevation-z8" [src]="channel.thumbnails.default.url" >
           {{ channel.title }}
         </mat-list-item>
       </mat-list>

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { YouTubeTalkFactory } from './talk-factory.service';
+import { TalkFactory } from './talk-factory.service';
 
 describe('TalkFactoryService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: YouTubeTalkFactory = TestBed.get(YouTubeTalkFactory);
+    const service: TalkFactory = TestBed.get(TalkFactory);
     expect(service).toBeTruthy();
   });
 });

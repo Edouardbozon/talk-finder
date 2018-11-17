@@ -1,3 +1,5 @@
+import { Thumbnails } from './thumbnails';
+
 export enum ResourceType {
   YoutubeVideo = 'youtube#video',
   YoutubeSearch = 'youtube#search',
@@ -10,12 +12,6 @@ export interface Talk {
   videoId: string;
   kind: ResourceType;
   thumbnails: Thumbnails;
-}
-
-export interface Thumbnails {
-  default: { url: string, width: number , height: number };
-  high: { url: string, width: number , height: number };
-  medium: { url: string, width: number , height: number };
 }
 
 export enum QDefinition {
