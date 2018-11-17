@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { YouTubeTalkFactory } from '../talk-factory/talk-factory.service';
 import { map, catchError } from 'rxjs/operators';
-import { Talk, QDefinition, ResourceType } from 'src/app/models/talk.model';
+import { Talk, ResourceType } from 'src/app/models/talk.model';
 import { Observable, of } from 'rxjs';
 
 /// <reference path="@types/gapi/index.d.ts" />
@@ -12,23 +12,45 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class TalkFinder {
-  private baseUrl = 'https://www.googleapis.com/youtube/v3/search';
+  private baseUrl = 'https://www.googleapis.com/youtube/v3';
 
   constructor(
     private http: HttpClient,
     private youTubeTalkFactory: YouTubeTalkFactory,
   ) {}
 
-  find(): Observable<Talk[]> {
+  searchVideoByQuery(): Observable<Talk[]> {
     const params = new HttpParams()
-      .set('q', 'javascript+typescript')
+      .set('q', 'typescript+factory')
+      .set('order', 'relevance')
+      .set('maxResults', (20).toString())
+      .set('key', environment.youtubeApiKey)
+      .set('part', 'snippet')
+      .set('type', 'video')
+      .set('relevanceLanguage', 'fr');
+
+    return this.http
+      .get<GoogleApiYouTubePaginationInfo<GoogleApiYouTubeSearchResource>>(
+        this.baseUrl + '/search',
+        { params },
+      )
+      .pipe(
+        map(this.extractData.bind(this)),
+        catchError(() => of(null)),
+      );
+  }
+
+  listVideoByChannel(id: string): Observable<Talk[]> {
+    const params = new HttpParams()
+      .set('channelId', id)
+      .set('order', 'relevance')
       .set('maxResults', (20).toString())
       .set('key', environment.youtubeApiKey)
       .set('part', 'snippet');
 
     return this.http
       .get<GoogleApiYouTubePaginationInfo<GoogleApiYouTubeSearchResource>>(
-        this.baseUrl,
+        this.baseUrl + '/search',
         { params },
       )
       .pipe(
