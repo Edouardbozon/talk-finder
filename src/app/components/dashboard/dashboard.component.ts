@@ -37,6 +37,6 @@ export class DashboardComponent implements OnInit {
           });
         }),
       )
-      .subscribe();
+      .subscribe(); // @todo unsubscribe
   }
 }

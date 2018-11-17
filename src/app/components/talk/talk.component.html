@@ -1,8 +1,10 @@
-<mat-card class="card"
+<mat-card
+  class="card"
   *ngIf="talk"
   [class.mat-elevation-z10]="isHovered"
   (mouseenter)="isHovered = true"
-  (mouseleave)="isHovered = false">
+  (mouseleave)="isHovered = false"
+>
   <mat-card-header>
     <mat-card-title>
       {{ talk.title }}
@@ -32,14 +34,9 @@
     mat-card-image
     class="poster"
   >
-    <span class="description">{{ talk.description }}</span>
+    <span class="description" *ngIf="talk.description">
+      {{ talk.description }}
+    </span>
     <img (load)="imgLoaded = true" [src]="talk.thumbnails.high.url" />
   </a>
-  <!--
-    <youtube-player
-      mat-card-image
-      class="video"
-      [videoId]="talk.videoId">
-    </youtube-player>
-  -->
 </mat-card>

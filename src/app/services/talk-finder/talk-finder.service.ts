@@ -19,32 +19,11 @@ export class TalkFinder {
     private youTubeTalkFactory: YouTubeTalkFactory,
   ) {}
 
-  searchVideoByQuery(): Observable<Talk[]> {
-    const params = new HttpParams()
-      .set('q', 'typescript+factory')
-      .set('order', 'relevance')
-      .set('maxResults', (20).toString())
-      .set('key', environment.youtubeApiKey)
-      .set('part', 'snippet')
-      .set('type', 'video')
-      .set('relevanceLanguage', 'fr');
-
-    return this.http
-      .get<GoogleApiYouTubePaginationInfo<GoogleApiYouTubeSearchResource>>(
-        this.baseUrl + '/search',
-        { params },
-      )
-      .pipe(
-        map(this.extractData.bind(this)),
-        catchError(() => of(null)),
-      );
-  }
-
   listVideoByChannel(id: string): Observable<Talk[]> {
     const params = new HttpParams()
       .set('channelId', id)
-      .set('order', 'relevance')
-      .set('maxResults', (20).toString())
+      .set('order', 'date')
+      .set('maxResults', (5).toString())
       .set('key', environment.youtubeApiKey)
       .set('part', 'snippet');
 

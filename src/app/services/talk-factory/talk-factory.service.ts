@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {
   Talk,
   YouTubeTalk,
-  QDefinition,
   ResourceType,
   Thumbnails,
 } from 'src/app/models/talk.model';

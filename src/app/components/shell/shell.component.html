@@ -7,19 +7,13 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)"
   >
-    <mat-toolbar>Parameters</mat-toolbar>
+    <mat-toolbar>{{ sideNavTitle }}</mat-toolbar>
     <aside class="aside">
-      <!-- <mat-form-field>
-        <mat-select placeholder="Langs" multiple>
-          <mat-option value="FR">Français</mat-option>
-          <mat-option value="EN">English</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-nav-list class="topics">
-        <div mat-list-item><mat-checkbox>JavaScript</mat-checkbox></div>
-        <div mat-list-item><mat-checkbox>TypeScript</mat-checkbox></div>
-        <div mat-list-item><mat-checkbox>NodeJS</mat-checkbox></div>
-      </mat-nav-list> -->
+      <mat-list>
+        <mat-list-item *ngFor="let channel of channelStore.channel | async">
+          {{ channel.title }}
+        </mat-list-item>
+      </mat-list>
     </aside>
   </mat-sidenav>
   <mat-sidenav-content>
