@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TalkFinder } from './talk-finder.service';
+import { TalkFactory } from './talk-factory.service';
 
-describe('TalkFinderService', () => {
+describe('TalkFactoryService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: TalkFinder = TestBed.get(TalkFinder);
+    const service: TalkFactory = TestBed.get(TalkFactory);
     expect(service).toBeTruthy();
   });
 });

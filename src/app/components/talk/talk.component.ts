@@ -1,8 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-export interface Talk {
-  title: string;
-}
+import { Talk } from 'src/app/models/talk.model';
 
 @Component({
   selector: 'tf-talk',

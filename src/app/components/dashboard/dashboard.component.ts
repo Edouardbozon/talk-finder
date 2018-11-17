@@ -1,6 +1,5 @@
 import {
   Component,
-  AfterViewInit,
   ViewChildren,
   ElementRef,
   QueryList,
@@ -8,8 +7,7 @@ import {
 } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { MatGridTile } from '@angular/material';
-import { Talk } from '../talk/talk.component';
+import { Talk } from 'src/app/models/talk.model';
 
 @Component({
   selector: 'tf-dashboard',
@@ -49,15 +47,7 @@ export class DashboardComponent implements OnInit {
     }),
   );
 
-  talks: Talk[] = [
-    { title: 'Hey' },
-    { title: 'Hey' },
-    { title: 'Hey' },
-    { title: 'Hey' },
-    { title: 'Hey' },
-    { title: 'Hey' },
-    { title: 'Hey' },
-  ];
+  talks: Talk[] = [];
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
