@@ -1,4 +1,5 @@
 import { Thumbnails } from './thumbnails';
+import { Entity } from './abstract-entity';
 
 export enum ResourceType {
   YoutubeVideo = 'youtube#video',
@@ -10,13 +11,14 @@ export enum QDefinition {
   SD = 'SD'
 }
 
-export class Talk {
+export class Talk extends Entity {
   constructor(
-    public uuid: string,
     public title: string,
     public description: string,
     public videoId: string,
     public kind: ResourceType,
     public thumbnails: Thumbnails
-  ) { }
+  ) {
+    super();
+  }
 }
