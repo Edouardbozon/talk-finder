@@ -3,8 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { TalkFactory } from '../talk-factory/talk-factory.service';
 import { map, catchError } from 'rxjs/operators';
-import { Talk, ResourceType } from 'src/app/models/talk.model';
 import { Observable, of } from 'rxjs';
+import { Talk, ResourceType } from '../../models/talk.model';
 
 /// <reference path="@types/gapi/index.d.ts" />
 

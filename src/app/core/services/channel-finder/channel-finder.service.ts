@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Channel } from 'src/app/models/channel.model';
+import { Channel } from '../../models/channel.model';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, catchError } from 'rxjs/operators';
-import { Thumbnails } from 'src/app/models/thumbnails';
+import { Thumbnails } from '../../models/thumbnails';
 
 /// <reference path="@types/gapi/index.d.ts" />
 

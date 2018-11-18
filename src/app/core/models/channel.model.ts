@@ -1,4 +1,4 @@
-import { uuid } from '../utils/uuid-generator';
+import { uuid } from '../../utils/uuid-generator';
 import { Thumbnails } from './thumbnails';
 
 export class Channel {

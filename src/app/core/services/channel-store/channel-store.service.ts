@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Channel } from 'src/app/models/channel.model';
+import { Channel } from '../../models/channel.model';
 import { ChannelFinder } from '../channel-finder/channel-finder.service';
 import { relevantChannels } from 'src/app/utils/relevant-channels';
 

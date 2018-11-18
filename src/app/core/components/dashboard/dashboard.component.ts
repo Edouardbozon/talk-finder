@@ -8,7 +8,7 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { TalkStore } from 'src/app/services/talk-store/talk-store.service';
+import { TalkStore } from '../../services/talk-store/talk-store.service';
 
 @Component({
   selector: 'tf-dashboard',

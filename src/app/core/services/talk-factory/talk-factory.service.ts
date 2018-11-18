@@ -3,9 +3,9 @@ import {
   Talk,
   YouTubeTalk,
   ResourceType,
-} from 'src/app/models/talk.model';
+} from '../../models/talk.model';
 import { uuid } from 'src/app/utils/uuid-generator';
-import { Thumbnails } from 'src/app/models/thumbnails';
+import { Thumbnails } from '../../models/thumbnails';
 
 @Injectable({
   providedIn: 'root',

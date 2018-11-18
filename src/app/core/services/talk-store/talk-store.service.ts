@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Talk } from 'src/app/models/talk.model';
 import { TalkFinder } from '../talk-finder/talk-finder.service';
 import { tap } from 'rxjs/operators';
-import { relevantChannels } from '../../utils/relevant-channels';
+import { relevantChannels } from '../../../utils/relevant-channels';
+import { Talk } from '../../models/talk.model';
 
 @Injectable({
   providedIn: 'root',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Talk } from 'src/app/models/talk.model';
+import { Talk } from '../../models/talk.model';
 
 @Component({
   selector: 'tf-talk',

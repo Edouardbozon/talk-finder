@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
-import { ChannelStore } from 'src/app/services/channel-store/channel-store.service';
+import { ChannelStore } from '../../services/channel-store/channel-store.service';
 
 @Component({
   selector: 'tf-shell',
