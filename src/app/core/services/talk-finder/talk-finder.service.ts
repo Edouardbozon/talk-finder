@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment.prod';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Talk, ResourceType } from '../../models/talk.model';
+import { CollectionParameters } from 'src/app/utils/collection-parameters';
+import { Collection } from 'src/app/utils/collection';
 
 /// <reference path="@types/gapi/index.d.ts" />
 
@@ -13,17 +15,22 @@ import { Talk, ResourceType } from '../../models/talk.model';
 export class TalkFinder {
   private baseUrl = 'https://www.googleapis.com/youtube/v3';
 
-  constructor(
-    private http: HttpClient,
-  ) {}
+  constructor(private http: HttpClient) {}
 
-  listVideoByChannel(id: string): Observable<Talk[]> {
-    const params = new HttpParams()
-      .set('channelId', id)
+  listVideoByChannel(
+    channelId: string,
+    collectionParams: CollectionParameters = new CollectionParameters(),
+  ): Observable<Collection<Talk>> {
+    let params = new HttpParams()
+      .set('channelId', channelId)
       .set('order', 'date')
-      .set('maxResults', (5).toString())
+      .set('maxResults', collectionParams.limit.toString())
       .set('key', environment.youtubeApiKey)
       .set('part', 'snippet');
+
+    if (collectionParams.nextPageToken !== null) {
+      params = params.set('pageToken', collectionParams.nextPageToken);
+    }
 
     return this.http
       .get<GoogleApiYouTubePaginationInfo<GoogleApiYouTubeSearchResource>>(
@@ -38,8 +45,8 @@ export class TalkFinder {
 
   private extractData(
     response: GoogleApiYouTubePaginationInfo<GoogleApiYouTubeSearchResource>,
-  ): Talk[] {
-    return response.items.map(searchResource => {
+  ): Collection<Talk> {
+    const resources = response.items.map(searchResource => {
       return new Talk(
         searchResource.snippet.title,
         searchResource.snippet.description,
@@ -48,5 +55,7 @@ export class TalkFinder {
         searchResource.snippet.thumbnails,
       );
     });
+
+    return new Collection(resources, response.nextPageToken);
   }
 }
