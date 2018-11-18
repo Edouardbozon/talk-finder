@@ -5,21 +5,12 @@ export enum ResourceType {
   YoutubeSearch = 'youtube#search',
 }
 
-export interface Talk {
-  uuid: string;
-  title: string;
-  description: string;
-  videoId: string;
-  kind: ResourceType;
-  thumbnails: Thumbnails;
-}
-
 export enum QDefinition {
   HD = 'HD',
   SD = 'SD'
 }
 
-export class YouTubeTalk implements Talk {
+export class Talk {
   constructor(
     public uuid: string,
     public title: string,

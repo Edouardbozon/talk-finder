@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
   Talk,
-  YouTubeTalk,
   ResourceType,
 } from '../../models/talk.model';
 import { uuid } from 'src/app/utils/uuid-generator';
@@ -18,7 +17,7 @@ export class TalkFactory {
     kind: ResourceType,
     thumbnails: Thumbnails,
   ): Talk {
-    return new YouTubeTalk(
+    return new Talk(
       uuid(),
       title,
       description,
