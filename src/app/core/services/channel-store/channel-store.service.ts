@@ -20,4 +20,10 @@ export class ChannelStore {
         );
     });
   }
+
+  getOneById(channelId: string): Channel {
+    return this._channel.value.filter(
+      channel => channel.channelId === channelId,
+    )[0];
+  }
 }

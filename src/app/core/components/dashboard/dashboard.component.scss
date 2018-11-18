@@ -6,3 +6,18 @@
   border-top: 1px solid #424242;
   margin: 2em 16px;
 }
+
+.channel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .mat-h4 {
+    display: flex;
+    align-items: center;
+  }
+}
+
+mat-grid-list {
+  margin: 0 -15px;
+}

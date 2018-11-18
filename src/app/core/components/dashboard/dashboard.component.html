@@ -1,16 +1,32 @@
 <div class="grid-container">
-  <h1 class="mat-h1">{{ title }}</h1>
+  <h1 class="mat-display-1">{{ title }}</h1>
   <ng-container
     *ngFor="
-      let channel of (talkStore.talkByChannel | async);
+      let talkByChannel of (talkStore.talkByChannel | async);
       let i = index;
-      let f = first;
+      let f = first
     "
   >
     <div *ngIf="!f" class="separator"></div>
+    <header class="channel-header">
+      <h4 class="mat-h4">
+        <img
+          class="thumbnail mat-elevation-z8"
+          [src]="talkByChannel.channel.thumbnails.default.url"
+        />
+        {{ talkByChannel.channel.title }}
+      </h4>
+      <a [href]="channelBaseUrl + talkByChannel.channelId" mat-raised-button>
+        YouTube
+      </a>
+    </header>
     <mat-grid-list cols="4" rowHeight="300px">
       <mat-grid-tile
-        *ngFor="let talk of channel.talk.resources; let j = index; let l = last"
+        *ngFor="
+          let talk of talkByChannel.talk.resources;
+          let j = index;
+          let l = last
+        "
         [colspan]="grid[i][j].cols"
         [rowspan]="grid[i][j].rows"
       >
@@ -19,7 +35,12 @@
           <button
             mat-button
             type="button"
-            (click)="loadMore(channel.channelId, channel.talk.nextPageToken)"
+            (click)="
+              loadMore(
+                talkByChannel.channelId,
+                talkByChannel.talk.nextPageToken
+              )
+            "
           >
             View more
           </button>

@@ -1,4 +1,3 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,17 +8,17 @@ import {
 } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { TalkStore } from '../../services/talk-store/talk-store.service';
-import { TalkFinder } from '../../services/talk-finder/talk-finder.service';
-import { CollectionParameters } from 'src/app/utils/collection-parameters';
+import { ChannelStore } from '../../services/channel-store/channel-store.service';
 
 @Component({
   selector: 'tf-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class DashboardComponent implements OnInit {
   title = 'Learn from the bests';
+  channelBaseUrl = 'https://www.youtube.com/channel/';
 
   @ViewChildren('cards', { read: ElementRef }) cardsRef: QueryList<ElementRef>;
 
@@ -27,8 +26,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     public talkStore: TalkStore,
-    private talkFinder: TalkFinder,
-    private breakpointObserver: BreakpointObserver,
+    public channelStore: ChannelStore,
   ) {}
 
   ngOnInit(): void {
