@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
 
   @ViewChildren('cards', { read: ElementRef }) cardsRef: QueryList<ElementRef>;
 
-  grid: { cols: number; rows: number }[] = [];
+  grid: { cols: number; rows: number }[][] = [];
 
   constructor(
     public talkStore: TalkStore,
@@ -29,12 +29,12 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.talkStore.talk
+    this.talkStore.talkByChannel
       .pipe(
         tap(talkResources => {
-          this.grid = talkResources.map((_, i) => {
+          this.grid = talkResources.map((talkByChannel, i) => talkByChannel.talkResources.map((_, i) => {
             return i === 0 ? { cols: 2, rows: 2 } : { cols: 1, rows: 1 };
-          });
+          }));
         }),
       )
       .subscribe(); // @todo unsubscribe

@@ -1,28 +1,40 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { TalkFinder } from '../talk-finder/talk-finder.service';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject, forkJoin, Observable, of } from 'rxjs';
+import { map, mergeMap, tap } from 'rxjs/operators';
+
 import { relevantChannels } from '../../../utils/relevant-channels';
-import { Talk } from '../../models/talk.model';
+import { TalkByChannel } from '../../models/talk-by-channel';
+import { TalkFinder } from '../talk-finder/talk-finder.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TalkStore {
-  private _talk = new BehaviorSubject<Talk[]>([]);
+  private _talkByChannel = new BehaviorSubject<TalkByChannel[]>([]);
 
-  public talk: Observable<Talk[]> = this._talk.asObservable();
+  public talkByChannel: Observable<TalkByChannel[]> = this._talkByChannel.asObservable();
 
   constructor(private talkFinder: TalkFinder) {
-    relevantChannels.forEach(channel => {
-      this.talkFinder
-      .listVideoByChannel(channel.channelId)
+    of(relevantChannels)
       .pipe(
-        tap(channelResources => {
-          this._talk.next([...this._talk.value, ...channelResources]);
-        }),
+        map(channels => channels.map(_channel => _channel.channelId)),
+        mergeMap(channelIds =>
+          forkJoin(
+            channelIds.map(channelId =>
+              this.talkFinder.listVideoByChannel(channelId),
+            ),
+          ),
+        ),
+        map(talkByChannel =>
+          talkByChannel.map(
+            (_talkByChannel, i) =>
+              new TalkByChannel(relevantChannels[i].channelId, _talkByChannel),
+          ),
+        ),
+        tap(talkByChannel => {
+          this._talkByChannel.next([...this._talkByChannel.value, ...talkByChannel]);
+        })
       )
       .subscribe();
-    });
   }
 }

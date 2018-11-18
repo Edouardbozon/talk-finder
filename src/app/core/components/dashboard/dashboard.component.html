@@ -1,12 +1,17 @@
 <div class="grid-container">
   <h1 class="mat-h1">{{ title }}</h1>
-  <mat-grid-list cols="4" rowHeight="300px">
-    <mat-grid-tile
-      *ngFor="let talk of talkStore.talk | async as talk; let i = index"
-      [colspan]="grid[i].cols"
-      [rowspan]="grid[i].rows"
-    >
-    <tf-talk [talk]="talk"></tf-talk>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <ng-container
+    *ngFor="let channel of (talkStore.talkByChannel | async); let i = index; let f = first"
+  >
+    <div *ngIf="!f" class="separator"></div>
+    <mat-grid-list cols="4" rowHeight="300px">
+      <mat-grid-tile
+        *ngFor="let talk of channel.talkResources; let j = index"
+        [colspan]="grid[i][j].cols"
+        [rowspan]="grid[i][j].rows"
+      >
+        <tf-talk [talk]="talk"></tf-talk>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </ng-container>
 </div>
