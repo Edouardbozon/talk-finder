@@ -5,12 +5,11 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, catchError } from 'rxjs/operators';
 import { Thumbnails } from '../../models/thumbnails';
+import { CoreModule } from '../../core.module';
 
 /// <reference path="@types/gapi/index.d.ts" />
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: CoreModule })
 export class ChannelFinder {
   private baseUrl = 'https://www.googleapis.com/youtube/v3';
 

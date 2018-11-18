@@ -6,12 +6,11 @@ import { Observable, of } from 'rxjs';
 import { Talk, ResourceType } from '../../models/talk.model';
 import { CollectionParameters } from 'src/app/utils/collection-parameters';
 import { Collection } from 'src/app/utils/collection';
+import { CoreModule } from '../../core.module';
 
 /// <reference path="@types/gapi/index.d.ts" />
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: CoreModule })
 export class TalkFinder {
   private baseUrl = 'https://www.googleapis.com/youtube/v3';
 

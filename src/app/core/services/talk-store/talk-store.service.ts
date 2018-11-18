@@ -6,10 +6,9 @@ import { relevantChannels } from '../../../utils/relevant-channels';
 import { TalkByChannel } from '../../models/talk-by-channel';
 import { TalkFinder } from '../talk-finder/talk-finder.service';
 import { CollectionParameters } from 'src/app/utils/collection-parameters';
+import { CoreModule } from '../../core.module';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: CoreModule })
 export class TalkStore {
   private _talkByChannel = new BehaviorSubject<TalkByChannel[]>([]);
 

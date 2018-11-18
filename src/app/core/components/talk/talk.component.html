@@ -17,8 +17,8 @@
     ></mat-progress-spinner>
   </mat-card-content>
   <a
-    href="/talk/"
-    (click)="$event.preventDefault()"
+    [href]="'/talk/' + talk.uuid + '/player'"
+    (click)="displayPlayer($event)"
     mat-card-image
     class="poster"
   >

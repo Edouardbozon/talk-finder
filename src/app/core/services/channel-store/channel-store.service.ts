@@ -3,10 +3,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Channel } from '../../models/channel.model';
 import { ChannelFinder } from '../channel-finder/channel-finder.service';
 import { relevantChannels } from 'src/app/utils/relevant-channels';
+import { CoreModule } from '../../core.module';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: CoreModule })
 export class ChannelStore {
   private _channel = new BehaviorSubject<Channel[]>([]);
 
