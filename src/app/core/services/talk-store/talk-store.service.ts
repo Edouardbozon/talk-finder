@@ -41,7 +41,7 @@ export class TalkStore {
   loadMore(channelId: string, nextPageToken: string): void {
     this.talkFinder.listVideoByChannel(
       channelId,
-      new CollectionParameters(nextPageToken, 4),
+      new CollectionParameters(nextPageToken, 8),
     ).pipe(
       tap(nextTalkByChannel => {
         const updatedTalkByChannel = this._talkByChannel.value.map(talkByChannel => {
